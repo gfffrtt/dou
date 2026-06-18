@@ -10,4 +10,8 @@ async def pdf_pipeline(pdfs: Sequence[Pdf]) -> None:
     for pdf in pdfs:
         cropped = await crop_pdf(pdf.source, pdf.crop_params)
         masked = await mask_pdf(cropped, pdf.mask_params)
-        await nodes(masked)
+        nodes_list = await nodes(masked)
+        for node in nodes_list.nodes:
+            print(f"<{node.kind}>")
+            print(node.text)
+            print(f"</{node.kind}>")
