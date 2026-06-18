@@ -1,0 +1,19 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "dou"
+version = "0.1.0"
+description = "PDF crop and mask pipeline for DOU documents"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "docling>=2.103.0",
+    "easyocr>=1.7.2",
+    "pymupdf>=1.27.2.3",
+    "pypdfium2",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/dou"]
